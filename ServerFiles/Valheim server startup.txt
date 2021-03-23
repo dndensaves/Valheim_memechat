@@ -1,0 +1,35 @@
+sudo apt install -y git net-tools
+
+//apt update && apt upgrade -y
+
+apt install git mlocate net-tools unzip curl -y
+apt install software-properties-common
+add-apt-repository -y multiverse
+dpkg --add-architecture i386
+apt update
+
+echo steam steam/question select "I AGREE" | sudo debconf-set-selections
+echo steam steam/license note '' | sudo debconf-set-selections
+apt install steamcmd libsdl2-2.0-0 libsdl2-2.0-0:i386 -y
+
+
+/usr/games/steamcmd +login anonymous +force_install_dir ~/valheim +app_update 896660 validate +exit
+
+cd ~/valheim
+
+git clone https://github.com/dndensaves/Valheim_memechat.git saves/worlds
+
+cp -v ~/valheim/saves/worlds/ServerFiles/* ~/valheim
+
+chmod u+x start_server_bepinex.sh
+chown -R root ~/valheim/
+
+./start_server_bepinex.sh
+
+
+
+./valheim_server.x86_64 -name "Barglesberg" -port 2456 -world "BargleNation" -password "bargle" -savedir valheim_saves -public 0
+
+
+
+155.138.200.165:2456

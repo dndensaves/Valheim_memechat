@@ -17,10 +17,11 @@ executable_name="valheim_server.x86_64"
 # Can be overriden by script parameters named exactly like the ones for the Valheim executable
 # (e.g. ./start_server_bepinex.sh -name "MyValheimPlusServer" -password "somethingsafe" -port 2456 -world "myworld" -public 1)
 server_name="ValheimPlus"
-server_password="password"
+server_password="bargle"
 server_port=2456
-server_world="world"
-server_public=1
+server_world="BargleNation"
+savedir="saves"
+server_public=0
 
 # The rest is automatically handled by BepInEx for Valheim+
 
@@ -111,12 +112,16 @@ do
 	shift 2
 	;;
 	-public)
+	savedir=$2
+	shift 2
+	;;
+	-public)
 	server_public=$2
 	shift 2
 	;;
 	esac
 done
 
-"${PWD}/${executable_name}" -name "${server_name}" -password "${server_password}" -port "${server_port}" -world "${server_world}" -public "${server_public}"
+"${PWD}/${executable_name}" -name "${server_name}" -password "${server_password}" -port "${server_port}" -world "${server_world}" -savedir "${savedir}" -public "${server_public}"
 
 export LD_LIBRARY_PATH=$templdpath

@@ -21,7 +21,7 @@ server_password="bargle"
 server_port=2456
 server_world="BargleNation"
 server_public=0
-server_savedir="~/valheim/saves"
+server_savedir="saves"
 
 # The rest is automatically handled by BepInEx for Valheim+
 
